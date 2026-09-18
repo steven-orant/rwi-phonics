@@ -3,76 +3,129 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Read Write Inc. – Set 1 Sounds</title>
+<title>Ada's Phonics in Space</title>
 <style>
   :root { font-family: Arial, Helvetica, sans-serif; color-scheme: dark; }
   * { box-sizing: border-box; }
-  body { margin: 0; min-height: 100vh; background: #111318; color: #fff; }
-  main { width: min(1200px, 96vw); margin: 0 auto; padding: 28px 18px 50px; }
-  h1 { font-size: clamp(28px, 4vw, 54px); margin: 0 0 8px; }
-  .subtitle { font-size: clamp(15px, 1.8vw, 22px); color: #c8ccd5; margin: 0 0 24px; }
-  .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)); gap: 14px; margin-bottom: 34px; }
-  .sound { min-height: 118px; border-radius: 18px; text-decoration: none; color: white; display: flex; flex-direction: column; align-items: center; justify-content: center; border: 3px solid rgba(255,255,255,.18); box-shadow: 0 5px 18px rgba(0,0,0,.25); transition: transform .08s ease, border-color .08s ease; background: #293047; }
-  .sound:focus, .sound:hover { transform: scale(1.045); border-color: white; outline: none; }
-  .sound.search { background: #3b3320; }
-  .sound.special { background: #293b34; }
-  .letter { font-size: clamp(42px, 5vw, 70px); font-weight: 800; line-height: 1; }
-  .badge { margin-top: 8px; font-size: 13px; text-transform: uppercase; letter-spacing: .08em; opacity: .72; }
-  h2 { font-size: clamp(22px, 2.7vw, 34px); margin: 28px 0 14px; }
-  .note { padding: 16px 18px; border-radius: 14px; background: #1b1f29; color: #c8ccd5; font-size: 15px; line-height: 1.45; }
-  .key { display: inline-block; width: 12px; height: 12px; border-radius: 3px; margin-right: 5px; vertical-align: -1px; }
-  .blue { background:#293047; } .gold { background:#3b3320; }
+  body {
+    margin: 0; min-height: 100vh; color: #fff; overflow-x: hidden;
+    background:
+      radial-gradient(circle at 18% 15%, rgba(120,96,255,.24), transparent 28%),
+      radial-gradient(circle at 82% 22%, rgba(44,176,255,.16), transparent 24%),
+      radial-gradient(circle at 54% 88%, rgba(255,71,170,.12), transparent 30%),
+      linear-gradient(180deg,#050714 0%,#09102e 48%,#11183d 100%);
+  }
+  body::before {
+    content:""; position:fixed; inset:0; pointer-events:none; opacity:.9;
+    background-image:
+      radial-gradient(circle at 8% 12%,#fff 0 1.2px,transparent 1.7px),
+      radial-gradient(circle at 22% 72%,rgba(255,255,255,.85) 0 1px,transparent 1.6px),
+      radial-gradient(circle at 34% 24%,#fff 0 1.1px,transparent 1.7px),
+      radial-gradient(circle at 46% 64%,rgba(255,255,255,.75) 0 1px,transparent 1.6px),
+      radial-gradient(circle at 57% 11%,#fff 0 1.3px,transparent 1.8px),
+      radial-gradient(circle at 67% 46%,rgba(255,255,255,.8) 0 1px,transparent 1.6px),
+      radial-gradient(circle at 82% 17%,#fff 0 1.1px,transparent 1.7px),
+      radial-gradient(circle at 93% 73%,rgba(255,255,255,.9) 0 1.2px,transparent 1.8px);
+  }
+  body::after {
+    content:""; position:fixed; width:220px; height:220px; right:-65px; top:46px;
+    border-radius:50%; pointer-events:none; opacity:.8;
+    background:radial-gradient(circle at 34% 31%,#ffd98e 0%,#f2a64d 22%,#d96b3a 47%,#793d69 70%,transparent 71%);
+    box-shadow:0 0 60px rgba(255,149,91,.2);
+  }
+  main {
+    position:relative; z-index:1; width:min(1200px,96vw); margin:24px auto 50px;
+    padding:30px 20px 50px; background:rgba(7,11,35,.58);
+    border:1px solid rgba(255,255,255,.12); border-radius:26px;
+    box-shadow:0 18px 55px rgba(0,0,0,.32); backdrop-filter:blur(5px);
+  }
+  h1 { font-size:clamp(30px,4vw,56px); margin:0 0 8px; text-shadow:0 0 24px rgba(145,190,255,.3); }
+  h2 { font-size:clamp(24px,3vw,36px); margin:30px 0 6px; }
+  .subtitle { font-size:clamp(16px,1.8vw,22px); color:#d8ddff; margin:0 0 28px; }
+  .section-note { margin:0 0 18px; color:#cbd3f6; font-size:15px; }
+  .grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(118px,1fr)); gap:14px; margin-bottom:32px; }
+  .sound {
+    min-height:116px; border-radius:20px; text-decoration:none; color:#fff; display:flex;
+    flex-direction:column; align-items:center; justify-content:center;
+    border:2px solid rgba(255,255,255,.18); box-shadow:0 10px 25px rgba(0,0,0,.25);
+    transition:transform .08s ease,border-color .08s ease,box-shadow .08s ease;
+  }
+  .sound:hover,.sound:focus { transform:scale(1.045); border-color:#fff; box-shadow:0 0 28px rgba(114,190,255,.25); outline:none; }
+  .fred { background:linear-gradient(180deg,rgba(73,92,210,.96),rgba(39,53,137,.96)); }
+  .older { background:linear-gradient(180deg,rgba(54,65,105,.9),rgba(31,38,72,.9)); }
+  .search { background:linear-gradient(180deg,rgba(117,88,39,.95),rgba(75,56,22,.95)); }
+  .special { background:linear-gradient(180deg,rgba(48,110,91,.94),rgba(29,75,61,.94)); }
+  .letter { font-size:clamp(42px,5vw,70px); font-weight:800; line-height:1; }
+  .badge { margin-top:8px; font-size:12px; text-transform:uppercase; letter-spacing:.08em; opacity:.8; }
+  .divider { height:1px; margin:38px 0 10px; background:linear-gradient(90deg,transparent,rgba(255,255,255,.28),transparent); }
+  .note { padding:16px 18px; border-radius:14px; background:rgba(18,24,55,.78); border:1px solid rgba(255,255,255,.08); color:#cbd3ed; line-height:1.45; font-size:14px; }
+  .key { display:inline-block; width:12px; height:12px; border-radius:3px; margin-right:5px; vertical-align:-1px; }
+  .blue { background:#3952c4; } .gold { background:#7c5b25; }
 </style>
 </head>
 <body>
 <main>
-  <h1>Read Write Inc. — Set 1 Sounds</h1>
-  <p class="subtitle">Big TV-friendly buttons, in teaching order.</p>
+  <h1>🚀 Ada's Phonics in Space</h1>
+  <p class="subtitle">Tap a sound to launch the video.</p>
+
+  <h2>🐸 Fred Talk</h2>
+  <p class="section-note">These are the school's confirmed Fred Talk QR videos, intended to work until 22 December 2026.</p>
+  <div class="grid">
+    <a class="sound fred" href="https://schools.ruthmiskin.com/training/view/uEcimOob/Vnka2RIO"><span class="letter">e</span><span class="badge">Fred Talk</span></a>
+    <a class="sound fred" href="https://schools.ruthmiskin.com/training/view/5I0xKvjg/TNMYT802"><span class="letter">l</span><span class="badge">Fred Talk</span></a>
+    <a class="sound fred" href="https://schools.ruthmiskin.com/training/view/lE1tJ9K2/zLX3Jd6h"><span class="letter">r</span><span class="badge">Fred Talk</span></a>
+    <a class="sound fred" href="https://schools.ruthmiskin.com/training/view/fqojdSZX/jGRumXIM"><span class="letter">j</span><span class="badge">Fred Talk</span></a>
+    <a class="sound fred" href="https://schools.ruthmiskin.com/training/view/kddQ4fA6/rfSi8Nsy"><span class="letter">i</span><span class="badge">Fred Talk</span></a>
+    <a class="sound fred" href="https://schools.ruthmiskin.com/training/view/BewioEpf/r1PLnYNE"><span class="letter">n</span><span class="badge">Fred Talk</span></a>
+    <a class="sound fred" href="https://schools.ruthmiskin.com/training/view/UEpMCNNz/hU6WDh2X"><span class="letter">p</span><span class="badge">Fred Talk</span></a>
+    <a class="sound fred" href="https://schools.ruthmiskin.com/training/view/dpg6i4hf/nXdghpNk"><span class="letter">g</span><span class="badge">Fred Talk</span></a>
+    <a class="sound fred" href="https://schools.ruthmiskin.com/training/view/PRjJP1ZN/ajYdDu9D"><span class="letter">o</span><span class="badge">Fred Talk</span></a>
+  </div>
+
+  <div class="divider"></div>
+  <h2>Other Set 1 sound videos</h2>
+  <p class="section-note">The older links we found earlier are kept down here for extra sound practice.</p>
 
   <div class="grid">
-    <a class="sound direct" href="https://schools.ruthmiskin.com/training/view/WiarKHqm/rEHO67K7"><span class="letter">m</span><span class="badge">lesson</span></a>
-    <a class="sound direct" href="https://schools.ruthmiskin.com/training/view/NNn2FnWu/NsJTdCfL"><span class="letter">a</span><span class="badge">lesson</span></a>
-    <a class="sound direct" href="https://schools.ruthmiskin.com/training/view/bM9zsPIO/d4nVOuYz"><span class="letter">s</span><span class="badge">lesson</span></a>
-    <a class="sound direct" href="https://schools.ruthmiskin.com/training/view/Sa2TUlvD/2sC9dL5p"><span class="letter">d</span><span class="badge">lesson</span></a>
-    <a class="sound direct" href="https://schools.ruthmiskin.com/training/view/q2wmp0Ny/eanIsXZN"><span class="letter">t</span><span class="badge">lesson</span></a>
-    <a class="sound direct" href="https://schools.ruthmiskin.com/training/view/yRlFNL5I/UhbpmSLn"><span class="letter">i</span><span class="badge">lesson</span></a>
-    <a class="sound direct" href="https://schools.ruthmiskin.com/training/view/w8ynw15f/d59vNo0h"><span class="letter">n</span><span class="badge">lesson</span></a>
-    <a class="sound direct" href="https://schools.ruthmiskin.com/training/view/3X9Nc3wL/zYyBrzCq"><span class="letter">p</span><span class="badge">lesson</span></a>
+    <a class="sound older" href="https://schools.ruthmiskin.com/training/view/WiarKHqm/rEHO67K7"><span class="letter">m</span><span class="badge">lesson</span></a>
+    <a class="sound older" href="https://schools.ruthmiskin.com/training/view/NNn2FnWu/NsJTdCfL"><span class="letter">a</span><span class="badge">lesson</span></a>
+    <a class="sound older" href="https://schools.ruthmiskin.com/training/view/bM9zsPIO/d4nVOuYz"><span class="letter">s</span><span class="badge">lesson</span></a>
+    <a class="sound older" href="https://schools.ruthmiskin.com/training/view/Sa2TUlvD/2sC9dL5p"><span class="letter">d</span><span class="badge">lesson</span></a>
+    <a class="sound older" href="https://schools.ruthmiskin.com/training/view/q2wmp0Ny/eanIsXZN"><span class="letter">t</span><span class="badge">lesson</span></a>
+    <a class="sound older" href="https://schools.ruthmiskin.com/training/view/yRlFNL5I/UhbpmSLn"><span class="letter">i</span><span class="badge">lesson</span></a>
+    <a class="sound older" href="https://schools.ruthmiskin.com/training/view/w8ynw15f/d59vNo0h"><span class="letter">n</span><span class="badge">lesson</span></a>
+    <a class="sound older" href="https://schools.ruthmiskin.com/training/view/3X9Nc3wL/zYyBrzCq"><span class="letter">p</span><span class="badge">lesson</span></a>
     <a class="sound search" href="https://www.google.com/search?q=site%3Aschools.ruthmiskin.com%2Ftraining%2Fview+%22Set+1%22+%22g%22+%22Ruth+Miskin+Training%22"><span class="letter">g</span><span class="badge">find</span></a>
-    <a class="sound direct" href="https://schools.ruthmiskin.com/training/view/jwVii6G1/1GCE8nyv"><span class="letter">o</span><span class="badge">lesson</span></a>
-    <a class="sound direct" href="https://schools.ruthmiskin.com/training/view/NbacoYxs/AcAZ2XiT"><span class="letter">c</span><span class="badge">lesson</span></a>
-    <a class="sound direct" href="https://schools.ruthmiskin.com/training/view/MjYAU8FZ/viGcPj5Y"><span class="letter">k</span><span class="badge">lesson</span></a>
+    <a class="sound older" href="https://schools.ruthmiskin.com/training/view/jwVii6G1/1GCE8nyv"><span class="letter">o</span><span class="badge">lesson</span></a>
+    <a class="sound older" href="https://schools.ruthmiskin.com/training/view/NbacoYxs/AcAZ2XiT"><span class="letter">c</span><span class="badge">lesson</span></a>
+    <a class="sound older" href="https://schools.ruthmiskin.com/training/view/MjYAU8FZ/viGcPj5Y"><span class="letter">k</span><span class="badge">lesson</span></a>
     <a class="sound search" href="https://www.google.com/search?q=site%3Aschools.ruthmiskin.com%2Ftraining%2Fview+%22Set+1%22+%22u%22+%22Ruth+Miskin+Training%22"><span class="letter">u</span><span class="badge">find</span></a>
-    <a class="sound direct" href="https://schools.ruthmiskin.com/training/view/B9vWV3Um/MIqKIYuv"><span class="letter">b</span><span class="badge">lesson</span></a>
-    <a class="sound direct" href="https://schools.ruthmiskin.com/training/view/fR9kOog2/9znJQHXV"><span class="letter">f</span><span class="badge">lesson</span></a>
-    <a class="sound direct" href="https://schools.ruthmiskin.com/training/view/9uczgG4I/vIomW2QF"><span class="letter">e</span><span class="badge">lesson</span></a>
+    <a class="sound older" href="https://schools.ruthmiskin.com/training/view/B9vWV3Um/MIqKIYuv"><span class="letter">b</span><span class="badge">lesson</span></a>
+    <a class="sound older" href="https://schools.ruthmiskin.com/training/view/fR9kOog2/9znJQHXV"><span class="letter">f</span><span class="badge">lesson</span></a>
+    <a class="sound older" href="https://schools.ruthmiskin.com/training/view/9uczgG4I/vIomW2QF"><span class="letter">e</span><span class="badge">lesson</span></a>
     <a class="sound search" href="https://www.google.com/search?q=site%3Aschools.ruthmiskin.com%2Ftraining%2Fview+%22Set+1%22+%22l%22+%22Ruth+Miskin+Training%22"><span class="letter">l</span><span class="badge">find</span></a>
     <a class="sound search" href="https://www.google.com/search?q=site%3Aschools.ruthmiskin.com%2Ftraining%2Fview+%22Set+1%22+%22h%22+%22Ruth+Miskin+Training%22"><span class="letter">h</span><span class="badge">find</span></a>
-    <a class="sound direct" href="https://schools.ruthmiskin.com/training/view/CKKtqXiF/c3fHZowm"><span class="letter">r</span><span class="badge">lesson</span></a>
-    <a class="sound direct" href="https://schools.ruthmiskin.com/training/view/fqojdSZX/jGRumXIM"><span class="letter">j</span><span class="badge">lesson</span></a>
-    <a class="sound direct" href="https://schools.ruthmiskin.com/training/view/0LoLSKLm/Nz6BoeCp"><span class="letter">v</span><span class="badge">lesson</span></a>
-    <a class="sound direct" href="https://schools.ruthmiskin.com/training/view/odoiacCU/y3wdliqD"><span class="letter">y</span><span class="badge">lesson</span></a>
-    <a class="sound direct" href="https://schools.ruthmiskin.com/training/view/04jGna2Q/a2ryuAso"><span class="letter">w</span><span class="badge">lesson</span></a>
-    <a class="sound direct" href="https://schools.ruthmiskin.com/training/view/U7XLAYn8/udIXk81A"><span class="letter">z</span><span class="badge">lesson</span></a>
-    <a class="sound direct" href="https://schools.ruthmiskin.com/training/view/kIzwqv47/LFjQGB6n"><span class="letter">x</span><span class="badge">lesson</span></a>
+    <a class="sound older" href="https://schools.ruthmiskin.com/training/view/CKKtqXiF/c3fHZowm"><span class="letter">r</span><span class="badge">lesson</span></a>
+    <a class="sound older" href="https://schools.ruthmiskin.com/training/view/fqojdSZX/jGRumXIM"><span class="letter">j</span><span class="badge">lesson</span></a>
+    <a class="sound older" href="https://schools.ruthmiskin.com/training/view/0LoLSKLm/Nz6BoeCp"><span class="letter">v</span><span class="badge">lesson</span></a>
+    <a class="sound older" href="https://schools.ruthmiskin.com/training/view/odoiacCU/y3wdliqD"><span class="letter">y</span><span class="badge">lesson</span></a>
+    <a class="sound older" href="https://schools.ruthmiskin.com/training/view/04jGna2Q/a2ryuAso"><span class="letter">w</span><span class="badge">lesson</span></a>
+    <a class="sound older" href="https://schools.ruthmiskin.com/training/view/U7XLAYn8/udIXk81A"><span class="letter">z</span><span class="badge">lesson</span></a>
+    <a class="sound older" href="https://schools.ruthmiskin.com/training/view/kIzwqv47/LFjQGB6n"><span class="letter">x</span><span class="badge">lesson</span></a>
   </div>
 
   <h2>Special friends</h2>
   <div class="grid">
-    <a class="sound search special" href="https://www.google.com/search?q=site%3Aschools.ruthmiskin.com%2Ftraining%2Fview+%22Set+1%22+%22sh%22+%22Ruth+Miskin+Training%22"><span class="letter">sh</span><span class="badge">find</span></a>
-    <a class="sound search special" href="https://www.google.com/search?q=site%3Aschools.ruthmiskin.com%2Ftraining%2Fview+%22Set+1%22+%22th%22+%22Ruth+Miskin+Training%22"><span class="letter">th</span><span class="badge">find</span></a>
-    <a class="sound search special" href="https://www.google.com/search?q=site%3Aschools.ruthmiskin.com%2Ftraining%2Fview+%22Set+1%22+%22ch%22+%22Ruth+Miskin+Training%22"><span class="letter">ch</span><span class="badge">find</span></a>
-    <a class="sound search special" href="https://www.google.com/search?q=site%3Aschools.ruthmiskin.com%2Ftraining%2Fview+%22Set+1%22+%22qu%22+%22Ruth+Miskin+Training%22"><span class="letter">qu</span><span class="badge">find</span></a>
-    <a class="sound search special" href="https://www.google.com/search?q=site%3Aschools.ruthmiskin.com%2Ftraining%2Fview+%22Set+1%22+%22ng%22+%22Ruth+Miskin+Training%22"><span class="letter">ng</span><span class="badge">find</span></a>
-    <a class="sound search special" href="https://www.google.com/search?q=site%3Aschools.ruthmiskin.com%2Ftraining%2Fview+%22Set+1%22+%22nk%22+%22Ruth+Miskin+Training%22"><span class="letter">nk</span><span class="badge">find</span></a>
-    <a class="sound search special" href="https://www.google.com/search?q=site%3Aschools.ruthmiskin.com%2Ftraining%2Fview+%22Set+1%22+%22ck%22+%22Ruth+Miskin+Training%22"><span class="letter">ck</span><span class="badge">find</span></a>
+    <a class="sound special" href="https://www.google.com/search?q=site%3Aschools.ruthmiskin.com%2Ftraining%2Fview+%22Set+1%22+%22sh%22+%22Ruth+Miskin+Training%22"><span class="letter">sh</span><span class="badge">find</span></a>
+    <a class="sound special" href="https://www.google.com/search?q=site%3Aschools.ruthmiskin.com%2Ftraining%2Fview+%22Set+1%22+%22th%22+%22Ruth+Miskin+Training%22"><span class="letter">th</span><span class="badge">find</span></a>
+    <a class="sound special" href="https://www.google.com/search?q=site%3Aschools.ruthmiskin.com%2Ftraining%2Fview+%22Set+1%22+%22ch%22+%22Ruth+Miskin+Training%22"><span class="letter">ch</span><span class="badge">find</span></a>
+    <a class="sound special" href="https://www.google.com/search?q=site%3Aschools.ruthmiskin.com%2Ftraining%2Fview+%22Set+1%22+%22qu%22+%22Ruth+Miskin+Training%22"><span class="letter">qu</span><span class="badge">find</span></a>
+    <a class="sound special" href="https://www.google.com/search?q=site%3Aschools.ruthmiskin.com%2Ftraining%2Fview+%22Set+1%22+%22ng%22+%22Ruth+Miskin+Training%22"><span class="letter">ng</span><span class="badge">find</span></a>
+    <a class="sound special" href="https://www.google.com/search?q=site%3Aschools.ruthmiskin.com%2Ftraining%2Fview+%22Set+1%22+%22nk%22+%22Ruth+Miskin+Training%22"><span class="letter">nk</span><span class="badge">find</span></a>
+    <a class="sound special" href="https://www.google.com/search?q=site%3Aschools.ruthmiskin.com%2Ftraining%2Fview+%22Set+1%22+%22ck%22+%22Ruth+Miskin+Training%22"><span class="letter">ck</span><span class="badge">find</span></a>
   </div>
 
-  <div class="note">
-    <strong><span class="key blue"></span>Lesson</strong> = direct Ruth Miskin page found online.
-    &nbsp;&nbsp;
-    <strong><span class="key gold"></span>Find</strong> = opens a Google search restricted to official Ruth Miskin lesson pages.
-  </div>
+  <div class="note">Fred Talk is now the main section. The older Set 1 links are kept below for extra practice and may expire independently.</div>
 </main>
 </body>
 </html>
